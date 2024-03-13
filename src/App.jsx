@@ -2,6 +2,19 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
+  return (
+    <>
+      <HeaderWithButton />
+      <Header name="Value" />
+    </>
+  );
+}
+
+function Header({ name }) {
+  return <h1>{name}</h1>;
+}
+
+function HeaderWithButton() {
   const [name, state] = useState("Arbaz");
   return (
     <>
@@ -13,12 +26,7 @@ function App() {
         Click
       </button>
       <Header name={name} />
-      <Header name="Value" />
     </>
   );
-}
-
-function Header({ name }) {
-  return <h1>{name}</h1>;
 }
 export default App;
