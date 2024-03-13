@@ -1,32 +1,24 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  return (
-    <>
-      <HeaderWithButton />
-      <Header name="Value" />
-    </>
-  );
-}
-
-function Header({ name }) {
-  return <h1>{name}</h1>;
-}
-
-function HeaderWithButton() {
-  const [name, state] = useState("Arbaz");
+  const [name, nameSetter] = useState("Arbaz");
   return (
     <>
       <button
         onClick={() => {
-          state((value) => (value = Math.random()));
+          nameSetter(Math.random());
         }}
       >
-        Click
+        click
       </button>
-      <Header name={name} />
+      <Header title={name} />
+      <Header title="Value" />
     </>
   );
 }
+
+const Header = React.memo(function Header({ title }) {
+  return <h1>{title}</h1>;
+});
 export default App;
